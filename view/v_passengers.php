@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Booking | Details</title>
-		<link rel = "stylesheet" type = "text/css" href ="form.css" >
+		<link rel = "stylesheet" type = "text/css" href ="view/form.css" >
 	</head>
 	
 	<body>
@@ -20,21 +20,20 @@
 				<?php
 						$i = $myBooking->getRegisteredPassengers();
 						
-						$nameProperty = new Property("value", $myBooking->getPassenger($i)->getName());
-						$ageProperty = new Property("value", $myBooking->getPassenger($i)->getAge());
+						$name = $myBooking->getPassenger($i)->getName();
+						$age = $myBooking->getPassenger($i)->getAge();
 						
 						echo '<p>Passenger '.($i+1).':</p>';
 						
-						echo new Input("name", "text", "Name :", $nameProperty);
-						echo new Input("age", "number", "Age :", $ageProperty);
-						echo '<br />';					
-					
-				?>		
+						echo new Input("name", "Name :", "text", $name);
+						echo new Input("age", "Age :", "number", $age);
+						echo '<br />';
+
+						echo new Button("init", "Previous", "submit");
+						echo new Button("confirm", "Next", "submit");
+						echo new Button("cancel", "Cancel", "submit");
+				?>	
 			</p>
-			
-			<input type="submit" name="init" value="Previous">
-			<input type="submit" name="confirm" value="Next">
-			<input type="submit" name="cancel" value="Cancel">
 			
 		</form>	
 		

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Booking | Registered</title>
-		<link rel = "stylesheet" type = "text/css" href ="form.css" >
+		<link rel = "stylesheet" type = "text/css" href ="view/form.css" >
 	</head>
 	
 	<body>

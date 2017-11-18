@@ -2,7 +2,8 @@
 
 	session_start();
 	
-	require 'classes.php';
+	//Autoload classes when they're used
+	require 'model/class_autoload.php';
 	
 	if(isset($_SESSION['booking']))
 	{

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Booking | Confirmation</title>
-		<link rel = "stylesheet" type = "text/css" href ="form.css" >
+		<link rel = "stylesheet" type = "text/css" href ="view/form.css" >
 	</head>
 	
 	<body>
@@ -18,13 +18,13 @@
 						echo $myBooking->getPassenger($i)->getName().'<br />';
 						echo $myBooking->getPassenger($i)->getAge().' years'.'<br />';
 						echo '<br />';
-					}	
+					}
+					
+					echo new Button("passengers", "Previous", "submit");
+					echo new Button("send", "Confirm", "submit");
+					echo new Button("cancel", "Cancel", "submit");
 				?>
 			</p>
-			
-				<input type="submit" name="passengers" value="Previous">
-				<input type="submit" name="send" value="Confirm">
-				<input type="submit" name="cancel" value="Cancel">
 				
 		</form>
 	</body>

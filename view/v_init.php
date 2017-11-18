@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Booking</title>
-		<link rel = "stylesheet" type = "text/css" href ="form.css" >
+		<link rel = "stylesheet" type = "text/css" href ="view/form.css" >
 	</head>
 	
 	<body>
@@ -17,28 +17,24 @@
 		<form method="post" action="index.php">
 			<p>
 				<?php
-				
-					echo new Input("destination","text","Destination : ", new Property("value", $myBooking->getDestination()));
-					echo new Input("numberOfPassengers","number","Number of passengers : ", new Property("value", $myBooking->getNumberOfPassengers()));
-					echo new Input("insurance", "checkbox", "Cancellation insurance", $myBooking->getInsurance());
+					
+					$options = array();
+					array_push($options, "");
+					array_push($options, "Amsterdam");
+					array_push($options, "Berlin");
+					array_push($options, "Bruxelles");
+					array_push($options, "Lisbonne");
+					array_push($options, "Paris");
+					
+					echo new DropDownList("destination","Destination : ", $options, $myBooking->getDestination());
+					echo new Input("numberOfPassengers","Number of passengers : ", "number", $myBooking->getNumberOfPassengers());
+					echo new Checkbox("insurance", "Cancellation insurance : ", $myBooking->getInsurance());
+					
+					echo new Button("passengers", "Next", "submit");
+					echo new Button("cancel", "Cancel", "submit");
 				
 				?>
-				<!--
-				<label for="destination">Destination : </label>
-				<input id ="destination" type="text" name="destination">
-				<br/>
-				
-				<label for="numberOfPassengers">Number of passengers : </label>
-				<input id ="numberOfPassengers" type="number" name="numberOfPassengers" min=1>
-				<br />
-				
-				<label for="insurance">Cancellation insurance : </label>
-				<input id ="insurance" type="checkbox" name="insurance">
-				-->
 			</p>
-			
-			<input type="submit" name="passengers" value="Next">
-			<input type="submit" name="cancel" value="Cancel">
 			
 		</form>
 		
