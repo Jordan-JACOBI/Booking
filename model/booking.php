@@ -116,7 +116,7 @@
 				}
 			}
 				
-				if(($this->insurance == 1))
+				if($this->insurance)
 				{
 					$price += 20;
 				}
