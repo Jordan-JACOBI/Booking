@@ -166,5 +166,25 @@
 		{
 			return $this->registeredPassengers == $this->numberOfPassengers;
 		}
+		
+		public function save($database, $table)
+		{
+			$bookingsTable = $table;
+			$passengersTable = 'passengers';
+			
+			//Store booking in $bookingTable
+			$database->query('INSERT INTO '.$bookingsTable.' (destination, insurance, price) 
+			VALUES("'.$this->destination.'", '.$this->insurance.', '.$this->getPrice().')');
+			
+			//ADD LINK BETWEEN PASSENGERS AND BOOKINGS ACCORDING TO IDs
+			
+			//Store passengers in $passengersTable
+			foreach($this->passengers as $passenger)
+			{
+				$database->query('INSERT INTO '.$passengersTable.' (name, age) 
+				VALUES("'.$passenger->getName().'", '.$passenger->getAge().')');
+			}
+					
+		}
 	}
 ?>
