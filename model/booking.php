@@ -1,6 +1,7 @@
 <?php	
 	class Booking
 	{
+		private $ID;
 		private $destination;
 		private $insurance;
 		private $numberOfPassengers;
@@ -13,6 +14,27 @@
 			$this->numberOfPassengers = 0;
 			$this->insurance = 0;
 			$this->registeredPassengers = 0;
+		}
+		
+		public function setID($newID)
+		{
+			//Set a new ID if 0<=$newID<=65536
+			if(is_numeric($newID) && ($newID >= 0) && ($newID <= 65536))
+			{
+				$this->ID = $newID;
+			}
+		}
+		
+		public function getID()
+		{
+			if($this->ID != null)
+			{
+				return $this->ID;
+			}
+			else
+			{
+				return null;
+			}
 		}
 		
 		public function getDestination()
@@ -118,6 +140,7 @@
 		
 		public function reset()
 		{
+			$this->ID = null;
 			$this->destination = "";
 			$this->numberOfPassengers= 0;
 			$this->insurance= 0;
