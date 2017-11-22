@@ -6,9 +6,10 @@ School project : Booking website in PHP using MVC design pattern.
 Last updates :
 
 2017/11/22
-Added a db connection (inputs must be filled according to your settings)
+Added a DB connection (inputs must be filled according to your settings)
 Added the possibility to select a page using GET method in index.php
 Moved index.php trash code into controller/c_preaction.php and controller/c_postaction.php
+Added Booking::save() to store data into the DB [!]-----Not finished yet-----[!]
 
 2017/11/18
 Used classes to simulate form inputs in php
