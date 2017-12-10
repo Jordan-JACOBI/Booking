@@ -66,6 +66,11 @@
 			$this->insurance = $insurance;
 		}
 		
+		public function register()
+		{
+			$this->registered = true;
+		}
+		
 		public function isRegistered()
 		{
 			return $this->registered;
@@ -176,32 +181,5 @@
 			return $this->registeredPassengers == $this->numberOfPassengers;
 		}
 		
-		public function save($database)
-		{
-			$bookingsTable = 'bookings';
-			$passengersTable = 'passengers';
-			$ticketsTable = 'tickets';
-			
-			//Store booking in $bookingTable
-			$database->query('INSERT INTO '.$bookingsTable.' (destination, insurance, price) 
-			VALUES("'.$this->destination.'", '.$this->insurance.', '.$this->getPrice().')');
-			
-			$bookingID = $database->insert_id;
-					
-			//Store passengers in $passengersTable
-			foreach($this->passengers as $passenger)
-			{
-				$database->query('INSERT INTO '.$passengersTable.' (name, age) 
-				VALUES("'.$passenger->getName().'", '.$passenger->getAge().')');
-				
-				$passID = $database->insert_id;
-				
-				//ADD LINK BETWEEN PASSENGERS AND BOOKINGS ACCORDING TO IDs
-				$database->query('INSERT INTO '.$ticketsTable.' (bookingID, passengerID)
-				VALUES('.$bookingID.', '.$passID.')');
-			}
-			
-			$this->registered = true;
-		}
 	}
 ?>

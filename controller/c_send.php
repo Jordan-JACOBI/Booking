@@ -2,7 +2,7 @@
 
 	if(!$myBooking->isRegistered())
 	{
-		$myBooking->save($db, 'bookings');
+		$db->save($myBooking);
 	}
 	
 	require 'view/v_send.php';

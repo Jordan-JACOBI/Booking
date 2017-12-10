@@ -6,7 +6,7 @@
 	
 	//Initiate DB connection : host/user/password/dbname
 	//$db = new mysqli("localhost","root","","bookingdb");
-	$db = new MyDatabase("localhost","root","","bookingdb");
+	$db = new MyDatabase();
 	
 	//Get the Booking data stored or create a new object
 	if(isset($_SESSION['booking']))
