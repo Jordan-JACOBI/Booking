@@ -6,6 +6,7 @@
 		private $insurance;
 		private $numberOfPassengers;
 		private $registeredPassengers;
+		private $registered;
 		private $passengers = array();
 		
 		public function __construct()
@@ -14,6 +15,7 @@
 			$this->numberOfPassengers = 0;
 			$this->insurance = 0;
 			$this->registeredPassengers = 0;
+			$this->registered = false;
 		}
 		
 		public function setID($newID)
@@ -62,6 +64,16 @@
 		public function setInsurance($insurance)
 		{
 			$this->insurance = $insurance;
+		}
+		
+		public function register()
+		{
+			$this->registered = true;
+		}
+		
+		public function isRegistered()
+		{
+			return $this->registered;
 		}
 		
 		public function getNumberOfPassengers()
@@ -144,7 +156,9 @@
 			$this->destination = "";
 			$this->numberOfPassengers= 0;
 			$this->insurance= 0;
+			$this->registeredPassengers = 0;
 			$this->passengers = array ();
+			$this->registered = false;
 		}
 		
 		public function getRegisteredPassengers()
@@ -167,24 +181,5 @@
 			return $this->registeredPassengers == $this->numberOfPassengers;
 		}
 		
-		public function save($database, $table)
-		{
-			$bookingsTable = $table;
-			$passengersTable = 'passengers';
-			
-			//Store booking in $bookingTable
-			$database->query('INSERT INTO '.$bookingsTable.' (destination, insurance, price) 
-			VALUES("'.$this->destination.'", '.$this->insurance.', '.$this->getPrice().')');
-			
-			//ADD LINK BETWEEN PASSENGERS AND BOOKINGS ACCORDING TO IDs
-			
-			//Store passengers in $passengersTable
-			foreach($this->passengers as $passenger)
-			{
-				$database->query('INSERT INTO '.$passengersTable.' (name, age) 
-				VALUES("'.$passenger->getName().'", '.$passenger->getAge().')');
-			}
-					
-		}
 	}
 ?>

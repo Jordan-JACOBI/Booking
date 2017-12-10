@@ -17,13 +17,15 @@
 		<form method="post" action="index.php">
 			<p>
 				<?php
-					
+					//Could be moved into m_destination and loaded at the beginning in a controller
 					$options = array();
 					array_push($options, "");
 					array_push($options, "Amsterdam");
 					array_push($options, "Berlin");
 					array_push($options, "Bruxelles");
 					array_push($options, "Lisbonne");
+					array_push($options, "London");
+					array_push($options, "Madrid");
 					array_push($options, "Paris");
 					
 					echo new DropDownList("destination","Destination : ", $options, $myBooking->getDestination());

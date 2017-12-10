@@ -1,5 +1,9 @@
 <?php
-	$myBooking->save($db, 'bookings');
+
+	if(!$myBooking->isRegistered())
+	{
+		$db->save($myBooking);
+	}
 	
 	require 'view/v_send.php';
 		
