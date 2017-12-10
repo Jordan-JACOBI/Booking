@@ -7,17 +7,17 @@
 	{
 		$myBooking->setDestination($_POST['destination']);
 	}
-	else if($myBooking->getDestination() =="")
+	else
 	{
 		$error['destination'] = 1;
 	}
 	
 	//----> Update NUMBER OF PASSENGERS
-	if(isset($_POST['numberOfPassengers']) && $_POST['numberOfPassengers']>0 && $_POST['numberOfPassengers'] < 300)
+	if(isset($_POST['numberOfPassengers']) && $_POST['numberOfPassengers']>0 && $_POST['numberOfPassengers'] < 30)
 	{	
 		$myBooking->setNumberOfPassengers($_POST['numberOfPassengers']);
 	}
-	else if ($myBooking->getNumberOfPassengers() == 0)
+	else
 	{
 		$error['numberPeople'] = 1;
 	}

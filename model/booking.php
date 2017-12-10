@@ -181,5 +181,17 @@
 			return $this->registeredPassengers == $this->numberOfPassengers;
 		}
 		
+		public function isValid()
+		{
+			foreach($this->passengers as $pass)
+			{
+				if($pass->getAge() >= 18)
+				{
+					return true;
+				}
+			}
+			
+			return false;
+		}
 	}
 ?>

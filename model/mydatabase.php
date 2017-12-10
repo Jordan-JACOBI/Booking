@@ -45,45 +45,10 @@
 			$booking->register();
 		}
 		
-		public function update($booking)
+		public function findBooking($id)
 		{
-			$query ='UPDATE '.$this->bookingsTable.' SET '.$this->bookingsTable;
-			
-			//UPDATE BOOKING
-			$table = $this->bookingsTable;
-			
-			$dest = $this->real_escape_string($booking->getDestination());
-			$price = $booking->getPrice();
-			$insurance = $booking->getInsurance()? 1:0;
-			$id = $booking->getID();
-			
-			$query = 'UPDATE '.$table.' SET destination = '.$dest.', insurance = '.$insurance.', price = '.$price.') 
-			WHERE ID = '.$id.')';
-			
-			if($this->query($query))
-			{
-				//UPDATE PASSENGERS
-				$table = $this->passengersTable;
-				$bookingID = $id;
-				
-				$query ='DELETE FROM '.$table.' WHERE bookingID = '.$id;
-				return $this->query($query);
-				
-				$number = $booking->getNumberOfPassengers();
-				
-				for($i = 0; $i < $number; $i++)
-				{
-					$name = $this->real_escape_string($booking->getPassenger($i)->getName());
-					$age = $booking->getPassenger($i)->getAge();
-					
-					$query = 'INSERT INTO '.$table.' (name, age, bookingID) 
-					VALUES("'.$name.'", '.$age.' ,'.$bookingID.')';
-					
-					$this->query($query);
-				}
-				
-				$booking->register();
-			}
+			$query ='SELECT * FROM '.$this->bookingsTable.' WHERE ID = '.$id;
+			return $this->query($query);
 		}
 		
 		public function erase($id)

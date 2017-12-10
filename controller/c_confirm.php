@@ -7,7 +7,7 @@
 		{
 			$myBooking->getPassenger($i)->setName($_POST['name']);
 		}
-		else if($_POST['name'] == "")
+		else
 		{
 			$error['name'] = 1;
 		}
@@ -16,7 +16,7 @@
 		{
 			$myBooking->getPassenger($i)->setAge($_POST['age']);
 		}
-		else if($_POST['age'] <= 0)
+		else
 		{
 			$error['age'] = 1;
 		}
@@ -28,7 +28,16 @@
 	
 	if($myBooking->allPassengersRegistered())
 	{
-		require 'view/v_confirm.php';
+		if($myBooking->isValid())
+		{
+			require 'view/v_confirm.php';
+		}
+		else
+		{
+			$myBooking->setRegisteredPassengers(0);
+			$error['majorpassenger'] = 1;
+			require 'view/v_passengers.php';
+		}
 	}
 	else
 	{
