@@ -12,7 +12,10 @@
 			Your application has been successfully registered.<br />
 			The total cost of your flight is $<?php echo $myBooking->getPrice();?>.
 		</p>
-
+	
+		<p>
+			<a href=index.php>Back to list</a>
+		</p>
 		
 	</body>
 </html>

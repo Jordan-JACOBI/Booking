@@ -23,6 +23,16 @@
 				echo 'Please enter an age greater than 0 for all the passengers.<br/>';
 			}
 			
+			if(isset($error['wrongid']))
+			{
+				echo 'Please enter a valid ID.<br/>';
+			}
+			
+			if(isset($error['notdeleted']))
+			{
+				echo 'Sorry, an error occured during the deletion.<br/>';
+			}
+			
 			echo '</p></div>';
 	}		
 ?>

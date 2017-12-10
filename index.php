@@ -5,6 +5,7 @@
 	$authorized = array();
 	array_push($authorized, "bookingslist");
 	array_push($authorized, "init");
+	array_push($authorized, "delete");
 	
 	if(isset($_GET['page'])&& in_array($_GET['page'], $authorized))
 	{
