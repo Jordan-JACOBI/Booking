@@ -32,7 +32,7 @@
 					echo new Input("numberOfPassengers","Number of passengers : ", "number", $myBooking->getNumberOfPassengers());
 					echo new Checkbox("insurance", "Cancellation insurance : ", $myBooking->getInsurance());
 					
-					echo new Button("passengers", "Next", "submit");
+					echo new Button("checkinit", "Next", "submit");
 					echo new Button("cancel", "Cancel", "submit");
 				
 				?>
