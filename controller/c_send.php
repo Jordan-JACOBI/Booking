@@ -5,9 +5,12 @@
 		$id = $myBooking->getID();
 		if($id != 0)
 		{	
-			$db->erase($id);
+			$db->update($myBooking);
 		}
-		$db->save($myBooking);
+		else
+		{
+			$db->save($myBooking);
+		}
 	}
 	else
 	{

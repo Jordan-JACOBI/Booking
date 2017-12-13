@@ -11,6 +11,46 @@
 			$this->passengersTable = 'passengers';
 		}
 		
+		public function update($booking)
+		{
+			$id = $booking->getID();
+			
+			//DELETE PASSENGERS
+			$query ='DELETE FROM '.$this->passengersTable.' WHERE bookingID = '.$id;
+			
+			$this->query($query);
+			
+			//SAVE NEW PASSENGERS
+			$table = $this->passengersTable;
+			$bookingID = $booking->getID();
+			
+			$number = $booking->getNumberOfPassengers();
+			
+			for($i = 0; $i < $number; $i++)
+			{
+				$name = $this->real_escape_string($booking->getPassenger($i)->getName());
+				$age = $booking->getPassenger($i)->getAge();
+				
+				$query = 'INSERT INTO '.$table.' (name, age, bookingID) 
+				VALUES("'.$name.'", '.$age.' ,'.$bookingID.')';
+				
+				$this->query($query);
+			}
+			
+			//UPDATE BOOKING
+			$dest = $this->real_escape_string($booking->getDestination());
+			$price = $booking->getPrice();
+			$insurance = $booking->getInsurance()? 1:0;
+			
+			$query ='UPDATE '.$this->bookingsTable.
+			'SET destination = '.$dest.', insurance = '.$insurance.',price = '.$price.
+			' WHERE ID = '.$id;
+			
+			$this->query($query);
+			
+			$booking->register();
+		}
+		
 		public function save($booking)
 		{
 			//SAVE BOOKING
