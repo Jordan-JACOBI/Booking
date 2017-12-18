@@ -5,6 +5,6 @@
 	//If the customer loads manually index.php, session needs to be reset
 	$_SESSION['booking'] = serialize($myBooking);
 	
-	require 'view/v_init.php';
+	require 'controller/c_bookingslist.php';
 	
 ?>

@@ -1,0 +1,150 @@
+/*******************************************************************/
+/*******************************MAIN********************************/
+/*******************************************************************/
+body
+{
+	display : flex;
+	flex-direction: column;
+	justify-content: center;*/
+}
+
+#wrapper
+{
+	border: solid black 2px;
+	margin:10px auto;
+    padding: 20px;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color : #F8F8F8;
+	color : #000;
+}
+
+#wrapper h1
+{
+	font : 25px;
+}
+
+#wrapper a,
+#wrapper em
+{
+	font-weight : bold;
+}
+
+#wrapper .error
+{
+	color : #C80000;
+}
+
+/*******************************************************************/
+/*******************************FORM********************************/
+/*******************************************************************/
+#wrapper label
+{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+
+#wrapper input[type=text],
+#wrapper input[type=number],
+textarea, 
+select
+{
+	width : 200px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin-bottom:20px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;  
+}
+
+#wrapper input[type=checkbox]
+{
+	margin-bottom:20px;
+}
+
+#wrapper input[type=text]:focus,
+#wrapper input[type=number]:focus, 
+#wrapper select:focus
+{
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+
+#wrapper input[type=submit],
+#wrapper button
+{
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #FFF;
+}
+
+#wrapper input[type=submit].normal,
+#wrapper button.normal
+{
+    background: #4B99AD;
+	margin-right : 2px;
+}
+
+#wrapper input[type=submit].cancel
+{
+    background: #DD1111;
+}
+
+#wrapper input[type=submit]:hover,
+#wrapper button:hover
+{
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+#wrapper input[type=submit].normal:hover,
+#wrapper button.normal:hover
+{
+    background: #4691A4;
+}
+
+#wrapper input[type=submit].cancel:hover
+{
+    background: #C80000;
+}
+
+/*******************************************************************/
+/*******************************TABLE*******************************/
+/*******************************************************************/
+#wrapper table
+{
+    border-collapse: collapse;
+	margin-top:25px;
+	margin-bottom :25px;
+}
+
+#wrapper table,
+#wrapper th,
+#wrapper td
+{
+   border: 1px solid #D8D8D8;
+   padding : 8px;
+}
+
+#wrapper th
+{
+    height: 30px;
+	background: #4B99AD;
+	color: #FFF;
+}
+
+#wrapper td
+{
+	background: #FFF;
+	color: #000;
+}

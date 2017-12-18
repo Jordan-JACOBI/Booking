@@ -1,96 +1,12 @@
-<?php
-	
-	//Generates HTML input + label 
-	//__toString() makes it possible to use it as :
-	// echo $myInput;
-	//
-	//echo new Input(
-	
-	class Property
-	{
-		private $name;
-		private $value;
-		
-		public function __construct($name, $value)
-		{
-			$this->name = $name;
-			$this->value = $value;
-		}
-		
-		public function __toString()
-		{
-			return $this->name.'="'.$this->value.'" ';
-		}
-	}
-	
-	
-	class Input
-	{
-		private $name;
-		private $type;
-		private $label;
-		private $property;
-		
-		
-		public function __construct($name, $type, $label, $property)
-		{
-			$this->name = $name;
-			$this->type = $type;
-			$this->label = $label;
-			$this->property =  $property;
-		}
-		
-		public function __toString ()
-		{
-			$labelField = '<label for="'.$this->name.'">'.$this->label.'</label>';
-			$inputField = '<input id ="'.$this->name.'" type="'.$this->type.'" name="'.$this->name.'"';
-			
-			$inputField .= $this->property;
-			
-			$inputField .= '>';
-			
-			return $labelField.$inputField.'<br />';
-		}
-	}
-	
-	class Person
-	{
-		private $name;
-		private $age;
-		
-		public function __construct($name, $age)
-		{
-			$this->name = $name;
-			$this->age = $age;
-		}
-		
-		public function getName()
-		{
-			return $this->name;
-		}
-		
-		public function setName($name)
-		{
-			$this->name = $name;
-		}
-		
-		public function getAge()
-		{
-			return $this->age;
-		}		
-		
-		public function setAge($age)
-		{
-			$this->age = $age;
-		}
-	}
-
+<?php	
 	class Booking
 	{
+		private $ID;
 		private $destination;
 		private $insurance;
 		private $numberOfPassengers;
 		private $registeredPassengers;
+		private $registered;
 		private $passengers = array();
 		
 		public function __construct()
@@ -99,6 +15,28 @@
 			$this->numberOfPassengers = 0;
 			$this->insurance = 0;
 			$this->registeredPassengers = 0;
+			$this->registered = false;
+		}
+		
+		public function setID($newID)
+		{
+			//Set a new ID if 0<=$newID<=65536
+			if(is_numeric($newID) && ($newID >= 0) && ($newID <= 65536))
+			{
+				$this->ID = $newID;
+			}
+		}
+		
+		public function getID()
+		{
+			if($this->ID != null)
+			{
+				return $this->ID;
+			}
+			else
+			{
+				return null;
+			}
 		}
 		
 		public function getDestination()
@@ -115,17 +53,27 @@
 		{
 			if($this->insurance)
 			{
-				return "checked";
+				return true;
 			}
 			else
 			{
-				return "";
+				return false;
 			}
 		}
 		
 		public function setInsurance($insurance)
 		{
 			$this->insurance = $insurance;
+		}
+		
+		public function register()
+		{
+			$this->registered = true;
+		}
+		
+		public function isRegistered()
+		{
+			return $this->registered;
 		}
 		
 		public function getNumberOfPassengers()
@@ -180,7 +128,7 @@
 				}
 			}
 				
-				if(($this->insurance == 1))
+				if($this->insurance)
 				{
 					$price += 20;
 				}
@@ -204,10 +152,13 @@
 		
 		public function reset()
 		{
+			$this->ID = null;
 			$this->destination = "";
 			$this->numberOfPassengers= 0;
 			$this->insurance= 0;
+			$this->registeredPassengers = 0;
 			$this->passengers = array ();
+			$this->registered = false;
 		}
 		
 		public function getRegisteredPassengers()
@@ -229,6 +180,18 @@
 		{
 			return $this->registeredPassengers == $this->numberOfPassengers;
 		}
+		
+		public function isValid()
+		{
+			foreach($this->passengers as $pass)
+			{
+				if($pass->getAge() >= 18)
+				{
+					return true;
+				}
+			}
+			
+			return false;
+		}
 	}
-
 ?>

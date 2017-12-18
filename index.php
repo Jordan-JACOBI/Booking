@@ -1,23 +1,15 @@
 <?php
-
-	session_start();
+	require 'controller/c_preaction.php';
 	
-	require 'classes.php';
+	//authorized pages // Can be moved to a model
+	$authorized = array();
+	array_push($authorized, "bookingslist");
+	array_push($authorized, "init");
+	array_push($authorized, "delete");
 	
-	if(isset($_SESSION['booking']))
+	if(isset($_GET['page'])&& in_array($_GET['page'], $authorized))
 	{
-		$myBooking = unserialize($_SESSION['booking']);
-	}
-	else
-	{
-		$myBooking = new Booking();
-	}
-		
-	
-	foreach ($_POST as $page=>$value)
-	{
-		//Format the page name
-		$page = 'controller/c_'.$page.'.php';
+		$page = 'controller/c_'.$_GET['page'].'.php';
 		
 		if(is_file($page))
 		{
@@ -28,8 +20,23 @@
 	
 	if(!isset($pageLoaded))
 	{
-		require 'controller/c_init.php';
+		foreach ($_POST as $page=>$value)
+		{
+			//Format the page name
+			$page = 'controller/c_'.$page.'.php';
+			
+			if(is_file($page))
+			{
+				$pageLoaded = 1;
+				require $page;
+			}
+		}
 	}
 	
-	$_SESSION['booking'] = serialize($myBooking);
+	if(!isset($pageLoaded))
+	{
+		require 'controller/c_bookingslist.php';
+	}
+	
+	require 'controller/c_postaction.php';
 ?>

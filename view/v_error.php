@@ -20,7 +20,32 @@
 			
 			if(isset($error['age']))
 			{
-				echo 'Please enter an age greater than 0 for all the passengers.<br/>';
+				echo 'Please enter an age between 0 and 130.<br/>';
+			}
+			
+			if(isset($error['wrongid']))
+			{
+				echo 'Please enter a valid ID.<br/>';
+			}
+			
+			if(isset($error['notdeleted']))
+			{
+				echo 'Sorry, an error occured during the deletion.<br/>';
+			}
+			
+			if(isset($error['saved']))
+			{
+				echo 'Sorry, an error occured during the registration. Please try again.<br/>';
+			}
+			
+			if(isset($error['majorpassenger']))
+			{
+				echo 'At least one passenger should be major.<br/>';
+			}
+			
+			if(isset($error['notsaved']))
+			{
+				echo 'Sorry, an error occured during the registration.<br/>';
 			}
 			
 			echo '</p></div>';

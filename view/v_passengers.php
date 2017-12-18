@@ -1,42 +1,40 @@
 <html>
 	<head>
 		<title>Booking | Details</title>
-		<link rel = "stylesheet" type = "text/css" href ="form.css" >
+		<link rel = "stylesheet" type = "text/css" href ="view/form.css" >
 	</head>
 	
 	<body>
-	
-		<h1>Details</h1>
-		
-		<p>
-			Please enter the name and age of the passengers.
-		</p>
-		
-		<?php require 'view/v_error.php'; ?>
-		
-		<form method="post" action="index.php">	
-		
+		<div id=wrapper>
+			<h1>Details</h1>
+			
 			<p>
-				<?php
-						$i = $myBooking->getRegisteredPassengers();
-						
-						$nameProperty = new Property("value", $myBooking->getPassenger($i)->getName());
-						$ageProperty = new Property("value", $myBooking->getPassenger($i)->getAge());
-						
-						echo '<p>Passenger '.($i+1).':</p>';
-						
-						echo new Input("name", "text", "Name :", $nameProperty);
-						echo new Input("age", "number", "Age :", $ageProperty);
-						echo '<br />';					
-					
-				?>		
+				Please enter the name and age of the passengers.
 			</p>
 			
-			<input type="submit" name="init" value="Previous">
-			<input type="submit" name="confirm" value="Next">
-			<input type="submit" name="cancel" value="Cancel">
+			<?php require 'view/v_error.php'; ?>
 			
-		</form>	
-		
+			<form method="post" action="index.php">	
+			
+				<p>
+					<?php
+							$i = $myBooking->getRegisteredPassengers();
+							
+							$name = $myBooking->getPassenger($i)->getName();
+							$age = $myBooking->getPassenger($i)->getAge();
+							
+							echo '<p>Passenger '.($i+1).':</p>';
+							
+							echo new Input("name", "Name :", "text", $name);
+							echo new Input("age", "Age :", "number", $age);
+							echo '<br />';
+
+							echo new Button("init", "Previous", "submit");
+							echo new Button("confirm", "Next", "submit");
+							echo new Button("cancel", "Cancel", "submit");
+					?>	
+				</p>
+			</form>	
+		</div>	
 	</body>
 </html>
