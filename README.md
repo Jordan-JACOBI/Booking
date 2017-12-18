@@ -4,6 +4,8 @@ School project : Booking website in PHP using MVC design pattern.
 
 
 Last updates :
+2017/12/18
+Added CSS
 
 2017/12/10
 Added a class MyDatabase with functions to save, erase or find data with prepared requests
