@@ -5,17 +5,29 @@
 	</head>
 	
 	<body>
-	
-		<h1>Registered</h1>
+		<div id=wrapper>
+			<h1>Registered</h1>
+			
+			<?php
+				if(!isset($error))
+				{
+			?>
+				<p>
+					Your application has been successfully registered.<br />
+					The total cost of your flight is $<?php echo $myBooking->getPrice();?>.
+				</p>
+			<?php
+				}
+				else
+				{
+					require 'view/v_error.php';
+				}
+			?>
+			
 		
-		<p>
-			Your application has been successfully registered.<br />
-			The total cost of your flight is $<?php echo $myBooking->getPrice();?>.
-		</p>
-	
-		<p>
-			<a href=index.php>Back to list</a>
-		</p>
-		
+			<p>
+				<a href=index.php>Back to list</a>
+			</p>
+		</div>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-	if(!$myBooking->isRegistered())
+	if(!$myBooking->isRegistered()&&$myBooking->isValid())
 	{
 		$id = $myBooking->getID();
 		if($id != 0)

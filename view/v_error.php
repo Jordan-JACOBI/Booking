@@ -43,6 +43,11 @@
 				echo 'At least one passenger should be major.<br/>';
 			}
 			
+			if(isset($error['notsaved']))
+			{
+				echo 'Sorry, an error occured during the registration.<br/>';
+			}
+			
 			echo '</p></div>';
 	}		
 ?>

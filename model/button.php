@@ -14,7 +14,20 @@
 		
 		public function __toString()
 		{
-			return '<input type="'.$this->type.'" name="'.$this->name.'" value="'.$this->text.'"/>';
+			$input = '<input type="'.$this->type.'" name="'.$this->name.'" value="'.$this->text.'"';
+			
+			if($this->name == 'cancel')
+			{
+				$input .= ' class="cancel"';
+			}
+			else
+			{
+				$input .= ' class="normal"';
+			}
+			
+			$input .=' />';
+			
+			return $input;
 		}
 	}
 ?>

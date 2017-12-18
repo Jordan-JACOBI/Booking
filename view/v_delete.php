@@ -5,25 +5,25 @@
 	</head>
 	
 	<body>
-	
-		<h1>Delete</h1>
+		<div id=wrapper>
+			<h1>Delete</h1>
+			
+			<p>
+				<?php
+					if(!isset($error))
+					{
+						echo 'Your application has been successfully deleted.<br />';
+					}
+					else
+					{
+						require 'view/v_error.php';
+					}
+				?>
+			</p>
 		
-		<p>
-			<?php
-				if(!isset($error))
-				{
-					echo 'Your application has been successfully deleted.<br />';
-				}
-				else
-				{
-					require 'view/v_error.php';
-				}
-			?>
-		</p>
-	
-		<p>
-			<a href=index.php>Back to list</a>
-		</p>
-		
+			<p>
+				<a href=index.php>Back to list</a>
+			</p>
+		</div>	
 	</body>
 </html>
