@@ -10,10 +10,11 @@ body
 
 #wrapper
 {
+	border: solid black 2px;
 	margin:10px auto;
     padding: 20px;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	background-color : #b2d8e8;
+	background-color : #F8F8F8;
 	color : #000;
 }
 
@@ -22,7 +23,8 @@ body
 	font : 25px;
 }
 
-#wrapper a
+#wrapper a,
+#wrapper em
 {
 	font-weight : bold;
 }
@@ -130,7 +132,7 @@ select
 #wrapper th,
 #wrapper td
 {
-   border: 1px solid white;
+   border: 1px solid #D8D8D8;
    padding : 8px;
 }
 

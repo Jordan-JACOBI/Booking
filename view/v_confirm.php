@@ -13,9 +13,11 @@
 					<?php
 						for($i = 0; $i<$myBooking->getNumberOfPassengers();$i++)
 						{
-							echo 'Passenger '.($i+1).' :'.'<br />';
+							echo '<fieldset>';
+							echo '<em>Passenger '.($i+1).' :'.'</em><br />';
 							echo $myBooking->getPassenger($i)->getName().'<br />';
 							echo $myBooking->getPassenger($i)->getAge().' years'.'<br />';
+							echo '</fieldset>';
 							echo '<br />';
 						}
 						
