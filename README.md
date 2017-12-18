@@ -4,6 +4,7 @@ School project : Booking website in PHP using MVC design pattern.
 
 
 Last updates :
+
 2017/12/18
 Added CSS
 
